@@ -226,12 +226,12 @@
         fileLang: "Arabic",
         fontFamily: '"Cairo", Tahoma, Arial, sans-serif',
         fontWeight: 800,
-        maxTextWidthRatio: 0.42,
-        startFontSize: 52,
-        minFontSize: 26,
-        fillStyle: "#0b4563",
-        xRatio: 0.5,
-        yRatio: 0.807
+  maxTextWidthRatio: 0.42,
+  startFontSize: 44,
+  minFontSize: 24,
+  fillStyle: "#0b4563",
+  xRatio: 0.5,
+  yRatio: 0.817
       },
       en: {
         title: "Create Your Eid Greeting Card",
@@ -244,12 +244,12 @@
         fileLang: "English",
         fontFamily: '"Poppins", Arial, Tahoma, sans-serif',
         fontWeight: 700,
-        maxTextWidthRatio: 0.42,
-        startFontSize: 48,
-        minFontSize: 26,
-        fillStyle: "#0b4563",
-        xRatio: 0.5,
-        yRatio: 0.807
+  maxTextWidthRatio: 0.42,
+  startFontSize: 40,
+  minFontSize: 24,
+  fillStyle: "#0b4563",
+  xRatio: 0.5,
+  yRatio: 0.817
       }
     };
 
@@ -341,15 +341,11 @@
 
         ctx.save();
         ctx.textAlign = "center";
-        ctx.textBaseline = "alphabetic";
+        ctx.textBaseline = "middle";
         ctx.direction = lang === "ar" ? "rtl" : "ltr";
         ctx.fillStyle = s.fillStyle;
         ctx.font = `${s.fontWeight} ${fontSize}px ${s.fontFamily}`;
-        
-        const metrics = ctx.measureText(name);
-        const correctedY = y + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
-        
-        ctx.fillText(name, x, correctedY, maxTextWidth);
+        ctx.fillText(name, x, y, maxTextWidth);
         ctx.restore();
 
         const safeName = sanitizeFileName(name);
