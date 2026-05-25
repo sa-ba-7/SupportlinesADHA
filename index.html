@@ -3,202 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support Lines | Eid Greeting Card Generator</title>
+  <title>Support Lines | Eid Card</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #eef2f6;
-      --card: #ffffff;
-      --text: #0b3550;
-      --muted: #617283;
-      --border: #d7e0e8;
-      --accent: #f45b1f;
-      --accent-hover: #e14f16;
-      --shadow: 0 18px 50px rgba(11, 53, 80, 0.12);
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 24px;
-      background:
-        radial-gradient(circle at top right, rgba(244,91,31,0.06), transparent 20%),
-        radial-gradient(circle at bottom left, rgba(11,53,80,0.06), transparent 22%),
-        var(--bg);
-      color: var(--text);
-      font-family: "Cairo", Tahoma, Arial, sans-serif;
+      background: #eef2f6;
+      font-family: "Cairo", Arial, sans-serif;
+      color: #0b3550;
     }
 
     .app {
       width: 100%;
       max-width: 620px;
-      background: var(--card);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
+      background: white;
       padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(11, 53, 80, 0.12);
+      text-align: center;
     }
 
     .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display: inline-block;
       background: rgba(244, 91, 31, 0.1);
-      color: var(--accent);
+      color: #f45b1f;
+      padding: 8px 16px;
       border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 14px;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 30px;
-      line-height: 1.25;
-      text-align: center;
-      color: var(--text);
+      margin: 0 0 10px;
+      font-size: 28px;
     }
 
-    .subtitle {
-      margin: 0 auto 24px;
-      max-width: 470px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    .form-grid {
-      display: grid;
-      gap: 16px;
+    p {
+      margin: 0 0 24px;
+      color: #617283;
+      line-height: 1.8;
     }
 
     .field {
-      display: grid;
-      gap: 8px;
+      text-align: start;
+      margin-bottom: 16px;
     }
 
     label {
-      font-size: 14px;
+      display: block;
+      margin-bottom: 8px;
       font-weight: 800;
-      color: var(--text);
     }
 
-    select,
-    input,
-    button {
+    select, input, button {
       width: 100%;
+      min-height: 56px;
       border-radius: 16px;
       font-size: 16px;
-      min-height: 58px;
-    }
-
-    select,
-    input {
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      padding: 0 16px;
-      outline: none;
-      transition: 0.2s ease;
       font-family: inherit;
     }
 
-    select:focus,
-    input:focus {
-      border-color: rgba(244, 91, 31, 0.65);
-      box-shadow: 0 0 0 4px rgba(244, 91, 31, 0.12);
-    }
-
-    input::placeholder {
-      color: #93a1ae;
+    select, input {
+      border: 1px solid #d7e0e8;
+      padding: 0 16px;
+      outline: none;
     }
 
     button {
-      margin-top: 4px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
+      border: 0;
+      background: #f45b1f;
+      color: white;
       font-weight: 800;
       cursor: pointer;
-      transition: 0.2s ease;
-      font-family: inherit;
     }
 
     button:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      background: #e14f16;
     }
 
     button:disabled {
       opacity: 0.7;
       cursor: wait;
-      transform: none;
     }
 
-    canvas {
-      display: none;
-    }
-
-    @media (max-width: 640px) {
-      .app {
-        padding: 22px 18px;
-        border-radius: 22px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .subtitle {
-        font-size: 14px;
-      }
-    }
+    canvas { display: none; }
   </style>
 </head>
+
 <body>
   <div class="app">
     <div class="badge">Support Lines</div>
+    <h1 id="title">صمّم بطاقة تهنئة العيد الخاصة بك</h1>
+    <p id="subtitle">اختَر اللغة، اكتب اسمك، ثم حمّل بطاقة العيد باسمك.</p>
 
-    <h1>صمّم بطاقة تهنئة العيد الخاصة بك</h1>
-    <p class="subtitle">
-      اختَر اللغة، اكتب اسمك، ثم حمّل بطاقة تهنئة العيد الجاهزة باسمك
-      بصيغة PNG لاستخدامها أو إرسالها مباشرة.
-    </p>
-
-    <div class="form-grid">
-      <div class="field">
-        <label for="lang">اللغة / Language</label>
-        <select id="lang">
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="name">الاسم / Name</label>
-        <input
-          id="name"
-          type="text"
-          maxlength="40"
-          placeholder="اكتب الاسم هنا / Enter your name here"
-        />
-      </div>
-
-      <button id="downloadBtn" type="button">تحميل البطاقة</button>
+    <div class="field">
+      <label for="lang">اللغة / Language</label>
+      <select id="lang">
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
     </div>
 
+    <div class="field">
+      <label for="name">الاسم / Name</label>
+      <input id="name" type="text" maxlength="40" placeholder="اكتب الاسم هنا / Enter your name here">
+    </div>
+
+    <button id="downloadBtn">تحميل البطاقة</button>
     <canvas id="cardCanvas"></canvas>
   </div>
 
@@ -208,81 +130,84 @@
       en: "EidAladha-EN.png"
     };
 
+    const settings = {
+      ar: {
+        title: "صمّم بطاقة تهنئة العيد الخاصة بك",
+        subtitle: "اختَر اللغة، اكتب اسمك، ثم حمّل بطاقة العيد باسمك.",
+        button: "تحميل البطاقة",
+        alert: "فضلاً اكتب الاسم أولاً",
+        fileLang: "Arabic",
+        font: '"Cairo", Tahoma, Arial, sans-serif',
+        weight: 800,
+        startSize: 48,
+        minSize: 24,
+        color: "#0b4563",
+
+        // مكان الشكل البيضاوي الأبيض
+        boxX: 0.295,
+        boxY: 0.785,
+        boxW: 0.430,
+        boxH: 0.075
+      },
+      en: {
+        title: "Create Your Eid Greeting Card",
+        subtitle: "Choose the language, enter your name, then download your Eid card.",
+        button: "Download Card",
+        alert: "Please enter your name first",
+        fileLang: "English",
+        font: '"Poppins", Arial, sans-serif',
+        weight: 700,
+        startSize: 44,
+        minSize: 22,
+        color: "#0b4563",
+
+        // مكان الشكل البيضاوي الأبيض
+        boxX: 0.295,
+        boxY: 0.785,
+        boxW: 0.430,
+        boxH: 0.075
+      }
+    };
+
     const canvas = document.getElementById("cardCanvas");
     const ctx = canvas.getContext("2d");
     const langSelect = document.getElementById("lang");
     const nameInput = document.getElementById("name");
     const downloadBtn = document.getElementById("downloadBtn");
-
-    const settings = {
-      ar: {
-        title: "صمّم بطاقة تهنئة العيد الخاصة بك",
-        subtitle:
-          "اختَر اللغة، اكتب اسمك، ثم حمّل بطاقة تهنئة العيد الجاهزة باسمك بصيغة PNG لاستخدامها أو إرسالها مباشرة.",
-        labelName: "الاسم / Name",
-        placeholder: "اكتب الاسم هنا / Enter your name here",
-        button: "تحميل البطاقة",
-        alert: "فضلاً اكتب الاسم أولاً",
-        fileLang: "Arabic",
-        fontFamily: '"Cairo", Tahoma, Arial, sans-serif',
-        fontWeight: 800,
-  maxTextWidthRatio: 0.42,
-  startFontSize: 44,
-  minFontSize: 24,
-  fillStyle: "#0b4563",
-  xRatio: 0.5,
-  yRatio: 0.817
-      },
-      en: {
-        title: "Create Your Eid Greeting Card",
-        subtitle:
-          "Choose the language, enter your name, then download your personalized Eid greeting card as a PNG file.",
-        labelName: "الاسم / Name",
-        placeholder: "اكتب الاسم هنا / Enter your name here",
-        button: "Download Card",
-        alert: "Please enter the name first",
-        fileLang: "English",
-        fontFamily: '"Poppins", Arial, Tahoma, sans-serif',
-        fontWeight: 700,
-  maxTextWidthRatio: 0.42,
-  startFontSize: 40,
-  minFontSize: 24,
-  fillStyle: "#0b4563",
-  xRatio: 0.5,
-  yRatio: 0.817
-      }
-    };
-
-    const titleEl = document.querySelector("h1");
-    const subtitleEl = document.querySelector(".subtitle");
-    const labelNameEl = document.querySelector('label[for="name"]');
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
 
     function updateUI() {
       const lang = langSelect.value;
       const s = settings[lang];
 
-      document.documentElement.lang = lang === "ar" ? "ar" : "en";
+      document.documentElement.lang = lang;
       document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
-      titleEl.textContent = s.title;
-      subtitleEl.textContent = s.subtitle;
-      labelNameEl.textContent = s.labelName;
-      nameInput.placeholder = s.placeholder;
+      title.textContent = s.title;
+      subtitle.textContent = s.subtitle;
       downloadBtn.textContent = s.button;
     }
 
-    function fitFontSize(text, family, weight, maxWidth, startSize, minSize) {
-      let size = startSize;
+    function loadImage(src) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
 
-      while (size >= minSize) {
-        ctx.font = `${weight} ${size}px ${family}`;
-        if (ctx.measureText(text).width <= maxWidth) {
-          return size;
-        }
-        size -= 1;
+    function fitFontSize(text, s, maxWidth) {
+      let size = s.startSize;
+
+      while (size >= s.minSize) {
+        ctx.font = `${s.weight} ${size}px ${s.font}`;
+        if (ctx.measureText(text).width <= maxWidth) return size;
+        size--;
       }
 
-      return minSize;
+      return s.minSize;
     }
 
     function sanitizeFileName(name) {
@@ -290,15 +215,6 @@
         .replace(/[^a-zA-Z0-9\u0600-\u06FF _-]/g, "")
         .trim()
         .replace(/\s+/g, "_") || "employee";
-    }
-
-    async function loadImage(src) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = () => reject(new Error("Image failed to load"));
-        img.src = src;
-      });
     }
 
     async function renderAndDownload() {
@@ -313,11 +229,11 @@
       }
 
       downloadBtn.disabled = true;
-      const originalText = downloadBtn.textContent;
       downloadBtn.textContent = lang === "ar" ? "جاري تجهيز البطاقة..." : "Preparing card...";
 
       try {
         await document.fonts.ready;
+
         const img = await loadImage(images[lang]);
 
         canvas.width = img.naturalWidth;
@@ -326,26 +242,28 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
 
-        const x = canvas.width * s.xRatio;
-        const y = canvas.height * s.yRatio;
-        const maxTextWidth = canvas.width * s.maxTextWidthRatio;
+        const boxX = canvas.width * s.boxX;
+        const boxY = canvas.height * s.boxY;
+        const boxW = canvas.width * s.boxW;
+        const boxH = canvas.height * s.boxH;
 
-        const fontSize = fitFontSize(
-          name,
-          s.fontFamily,
-          s.fontWeight,
-          maxTextWidth,
-          s.startFontSize,
-          s.minFontSize
-        );
+        const centerX = boxX + boxW / 2;
+        const centerY = boxY + boxH / 2;
+        const maxTextWidth = boxW * 0.82;
+
+        const fontSize = fitFontSize(name, s, maxTextWidth);
 
         ctx.save();
+        ctx.font = `${s.weight} ${fontSize}px ${s.font}`;
+        ctx.fillStyle = s.color;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.direction = lang === "ar" ? "rtl" : "ltr";
-        ctx.fillStyle = s.fillStyle;
-        ctx.font = `${s.fontWeight} ${fontSize}px ${s.fontFamily}`;
-        ctx.fillText(name, x, y, maxTextWidth);
+
+        // هذا أهم سطر: ينزل النص شوي عشان يكون بالنص بصريًا داخل البيضاوي
+        const visualCenterFix = fontSize * 0.08;
+
+        ctx.fillText(name, centerX, centerY + visualCenterFix, maxTextWidth);
         ctx.restore();
 
         const safeName = sanitizeFileName(name);
@@ -353,24 +271,22 @@
         link.download = `SupportLines_EidCard_${s.fileLang}_${safeName}.png`;
         link.href = canvas.toDataURL("image/png");
         link.click();
+
       } catch (error) {
-        alert(
-          lang === "ar"
-            ? "تعذر تحميل الصورة. تأكدي من وجود ملفات الصور في نفس المجلد."
-            : "Could not load image. Make sure the image files are in the same folder."
+        alert(lang === "ar"
+          ? "تعذر تحميل الصورة. تأكدي أن الصور موجودة بنفس مجلد index.html."
+          : "Could not load the image. Make sure the images are in the same folder as index.html."
         );
       } finally {
         downloadBtn.disabled = false;
-        downloadBtn.textContent = originalText;
+        updateUI();
       }
     }
 
     langSelect.addEventListener("change", updateUI);
     downloadBtn.addEventListener("click", renderAndDownload);
-    nameInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        renderAndDownload();
-      }
+    nameInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") renderAndDownload();
     });
 
     updateUI();
