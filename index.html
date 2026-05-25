@@ -227,11 +227,11 @@
         fontFamily: '"Cairo", Tahoma, Arial, sans-serif',
         fontWeight: 800,
         maxTextWidthRatio: 0.42,
-        startFontSize: 58,
-        minFontSize: 28,
+        startFontSize: 52,
+        minFontSize: 26,
         fillStyle: "#0b4563",
         xRatio: 0.5,
-        yRatio: 0.800
+        yRatio: 0.807
       },
       en: {
         title: "Create Your Eid Greeting Card",
@@ -245,12 +245,11 @@
         fontFamily: '"Poppins", Arial, Tahoma, sans-serif',
         fontWeight: 700,
         maxTextWidthRatio: 0.42,
-        startFontSize: 50,
+        startFontSize: 48,
         minFontSize: 26,
         fillStyle: "#0b4563",
         xRatio: 0.5,
-        yRatio: 0.800
-
+        yRatio: 0.807
       }
     };
 
@@ -342,11 +341,15 @@
 
         ctx.save();
         ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
+        ctx.textBaseline = "alphabetic";
         ctx.direction = lang === "ar" ? "rtl" : "ltr";
         ctx.fillStyle = s.fillStyle;
         ctx.font = `${s.fontWeight} ${fontSize}px ${s.fontFamily}`;
-        ctx.fillText(name, x, y, maxTextWidth);
+        
+        const metrics = ctx.measureText(name);
+        const correctedY = y + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
+        
+        ctx.fillText(name, x, correctedY, maxTextWidth);
         ctx.restore();
 
         const safeName = sanitizeFileName(name);
